@@ -45,6 +45,9 @@ func (t *Timestamp) Set(value string) error {
 
 // String returns a readable representation of this value (for usage defaults)
 func (t *Timestamp) String() string {
+	if t.timestamp != nil && t.layout != "" {
+		return t.timestamp.Format(t.layout)
+	}
 	return fmt.Sprintf("%#v", t.timestamp)
 }
 
